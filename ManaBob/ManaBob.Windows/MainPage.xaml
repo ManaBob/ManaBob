@@ -1,4 +1,5 @@
-﻿<forms:WindowsPage
+﻿<!--<forms:WindowsPage-->
+    <Page
     x:Class="ManaBob.Windows.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:forms="using:Xamarin.Forms.Platform.WinRT"
@@ -9,6 +10,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="84" Margin="324,516,0,0" VerticalAlignment="Top" Width="144" Click="button_Click"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="160" Margin="164,272,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="476" TextChanged="textBox_TextChanged"/>
 
     </Grid>
-</forms:WindowsPage>
+    </Page>
+        <!--</forms:WindowsPage>-->

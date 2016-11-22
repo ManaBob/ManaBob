@@ -64,7 +64,6 @@ namespace ManaBob
             Type = Format.Binary;
             Bytes = _bytes;
         }
-
     }
 
 }// namespace ManaBob

@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+
 using ManaBob;
+using ManaBob.ViewModel;
 
 namespace ManaBob.Pages
 {
@@ -35,13 +37,6 @@ namespace ManaBob.Pages
         }
     }
 
-
-    public class RoomDataTemplate
-    {
-        TextCell cell;
-    }
-
-
 	public partial class RoomList : ContentPage
 	{
         Navigator navi;
@@ -51,7 +46,14 @@ namespace ManaBob.Pages
 		{
             navi = _navi;
             pages = _pages;
-			InitializeComponent ();
+
+            var viewModel = new RoomListViewModel();
+            viewModel.AllRooms = RoomListTest.GetRoomList();
+            this.BindingContext = viewModel;
+
+            // Load XAML
+            InitializeComponent();
+
 
             var strings = new List<String>
             {
@@ -65,23 +67,32 @@ namespace ManaBob.Pages
                 menuPick.Items.Add(str);
             }
 
-            //List<Room> rooms = RoomListTest.GetRoomList();
-            roomListView.ItemTapped += (sender, args)=>
-            {
-                var item = args.Item as Room;
-                if(item == null)
-                {
-                    return;
-                }
-                this.appName.Text = item.Name;
-                roomListView.SelectedItem = null;
-            };
+            roomListView.ItemSelected   += OnRoomSelected;
+            roomListView.ItemTapped     += OnRoomTapped;
 
-            roomListView.ItemTemplate = new DataTemplate(typeof(TextCell));
-            roomListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
-
-            roomListView.ItemsSource = RoomListTest.GetRoomList();
         }
 
-	}
+        void OnRoomTapped(object _sender, ItemTappedEventArgs _ev)
+        {
+            var item = _ev.Item as Room;
+            if (item == null)
+            {
+                return;
+            }
+            this.appName.Text = item.Name;
+            roomListView.SelectedItem = null;
+        }
+
+        void OnRoomSelected(object _sender, SelectedItemChangedEventArgs _ev)
+        {
+            var item = _ev.SelectedItem as Room;
+            if (item == null)
+            {
+                return;
+            }
+            this.appName.Text = item.Name;
+            roomListView.SelectedItem = null;
+        }
+
+    }
 }

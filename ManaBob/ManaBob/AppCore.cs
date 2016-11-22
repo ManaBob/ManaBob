@@ -43,11 +43,12 @@ namespace ManaBob
 
             navi = new Navigator(this);
 
-            var intro = new NavigationPage(new Intro(navi, pages));
-            pages.Register<Intro>(intro);
-
+            //var roomlist = new NavigationPage(new RoomList(navi, pages));
+            //pages.Register<RoomList>(roomlist);
+            var chatroom = new NavigationPage(new ChatRoom(navi, pages));
+            pages.Register<RoomList>(chatroom);
             // Mandatory for Framework's initialization
-            this.MainPage = intro;
+            this.MainPage = chatroom;
         }
 
         protected override void OnStart()

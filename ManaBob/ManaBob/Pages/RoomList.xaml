@@ -70,11 +70,16 @@
                   Grid.Column="2"
                   />
     </Grid>
-  
+
     <!-- 3. Room List -->
     <Grid Grid.Row="3" BackgroundColor="Silver">
       <ScrollView>
-        <ListView x:Name="roomListView">
+        <ListView x:Name="roomListView" ItemsSource="{Binding AllRooms}">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <TextCell Text="{Binding Name}" Detail="{Binding Budget}"/>               
+            </DataTemplate>
+          </ListView.ItemTemplate>
         </ListView>
       </ScrollView>
     </Grid>

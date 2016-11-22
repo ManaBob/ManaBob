@@ -41,20 +41,20 @@
     <!-- Message Display Panel -->
     <Grid Grid.Row="1">
       <ScrollView>
-        
+
         <StackLayout x:Name="MessageStack"
                      Orientation="Vertical"
                      BackgroundColor="#EEEEFF">
           
-          <!--상대의 메세지-->
-          <Label Text="Others" 
-                 LineBreakMode="WordWrap"
-                 />
-          
-          <!--자신의 메세지-->
-          <Label Text="Myself" 
-                 LineBreakMode="WordWrap"
-                 />
+          <ListView x:Name="ChatListView" ItemsSource="{Binding Chats}">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <!--메세지 그리기-->
+                <TextCell Text="{Binding Text}" Detail="{Binding Sender}"/>
+
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
 
         </StackLayout>
       </ScrollView>

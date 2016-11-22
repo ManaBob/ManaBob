@@ -2,35 +2,41 @@
 using System.Collections.Generic;
 using System.Text;
 
+using System.ComponentModel;
+using Xamarin.Forms;
+
 namespace ManaBob.ViewModel
 {
-    public class RoomListViewModel
+
+    public class RoomListViewModel : 
+            Xamarin.Forms.BindableObject
     {
-        // - Note
-        //      현재 보유한 Room 들을 특정 기준으로 필터링
-        // - To Do
-        //      전체 목록은 어디에 보관??
-        //      필터를 변경할 경우 오버헤드?
-        //      필터링 하면서 동기화하는 방법?
-        public static List<Room> Filter()
+        /// <summary>
+        ///     현재 보유한 Room 들을 특정 기준으로 필터링
+        /// </summary>
+        public static List<Room> Filter(List<Room> _old)
         {
-            throw new NotImplementedException();
+            return _old;            
         }
 
-        // - Note
-        //      주어진 Room 들을 특정 기준으로 재정렬
-        public static List<Room> Sort(List<Room> _list)
+        /// <summary>
+        ///     주어진 Room 들을 특정 기준으로 재정렬
+        /// </summary>
+        public static List<Room> Sort(List<Room> _old)
         {
-            throw new NotImplementedException();
+            return _old;
         }
 
-        // - Note
-        //      사용자가 지정한 방에 입장
+        /// <summary>
+        ///     사용자가 지정한 방에 입장.
+        /// </summary>
         public void Enter(Room _room)
         {
             throw new NotImplementedException();
         }
 
+        public List<Room> FilteredRooms { get; set; }
+        public List<Room> AllRooms { get; set; }
     }
 
 }// namespace ManaBob.ViewModel

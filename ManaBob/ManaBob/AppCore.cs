@@ -43,8 +43,8 @@ namespace ManaBob
 
             navi = new Navigator(this);
 
-            var intro = new NavigationPage(new Intro(navi, pages));
-            pages.Register<Intro>(intro);
+            var intro = new NavigationPage(new RoomList(navi, pages));
+            pages.Register<RoomList>(intro);
 
             // Mandatory for Framework's initialization
             this.MainPage = intro;

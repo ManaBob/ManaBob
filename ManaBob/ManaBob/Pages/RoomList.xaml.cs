@@ -53,14 +53,16 @@ namespace ManaBob.Pages
             pages = _pages;
 			InitializeComponent ();
 
-            var strings = new List<String>
+            var menuStrings = new List<String>
             {
-                "menu1",
-                "menu2",
-                "menu3",
+                "한식",
+                "양식",
+                "일식",
+                "중식",
+                "학식"
             };
 
-            foreach(var str in strings)
+            foreach(var str in menuStrings)
             {
                 menuPick.Items.Add(str);
             }
@@ -73,9 +75,10 @@ namespace ManaBob.Pages
                 {
                     return;
                 }
-                this.appName.Text = item.Name;
+               // this.appName.Text = item.Name;
                 roomListView.SelectedItem = null;
             };
+
 
             roomListView.ItemTemplate = new DataTemplate(typeof(TextCell));
             roomListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");

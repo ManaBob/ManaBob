@@ -47,5 +47,5 @@ namespace ManaBob.Pages
                 person.Items.Add(str);
             }
         }
-    }
+    }  
 }

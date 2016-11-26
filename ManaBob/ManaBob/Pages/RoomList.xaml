@@ -49,11 +49,16 @@
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="10"/>
       </Grid.ColumnDefinitions>
-        <Label    Text="방제목"
+        <!--<Label    Text="방제목"
                   Grid.Column="0"
                   VerticalOptions="Center"
                   HorizontalOptions="Center"
-                  FontSize="15"/>
+                  FontSize="15"/>-->
+       <Image     Source="Images/RoomList_tilte.png"
+                  Grid.Column="0"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  />
         <SearchBar    x:Name="searchBar"
                       Grid.Column="1"
                       />

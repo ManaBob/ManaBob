@@ -48,12 +48,16 @@
           <ColumnDefinition Width="10"/>
           <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-       <Label  x:Name="critical"
+       <!--<Label  x:Name="critical"
                 Text="*는 필수항목"
                 TextColor="Red"
                 WidthRequest="120"
                 Grid.Column="1"
-                Margin="30,0"/>
+                Margin="30,0"/>-->
+        <Image    Source="Images/CreateRoom_red.png"
+                  WidthRequest="120"
+                  Grid.Column="1"
+                  Margin="25,0"/>
         </Grid>
 
         <!--*방 제목 입력-->
@@ -62,12 +66,16 @@
           <ColumnDefinition Width="10"/>
           <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label   x:Name="RoomTitleTextBlock"
+        <!--<Label   x:Name="RoomTitleTextBlock"
                  Text="* 방 제목 입력"
                  TextColor="Black"
                  WidthRequest="120"
                  Grid.Column="1"
-                 Margin="30,0"/>
+                 Margin="30,0"/>-->
+        <Image    Source="Images/CreateRoom_title.png"
+                  WidthRequest="120"
+                  Grid.Column="1"
+                  Margin="25,0"/>
         </Grid>
         <!--*카테고리선택-->
       <Grid Grid.Row="3">
@@ -86,11 +94,15 @@
           <ColumnDefinition Width="10"/>
           <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label  x:Name="categoryLabel"
+        <!--<Label  x:Name="categoryLabel"
                 Text="* 카테고리선택"
                 WidthRequest="120"
                 Margin="30,5"
-                Grid.Column="1"/>
+                Grid.Column="1"/>-->
+        <Image    Source="Images/CreateRoom_cata.png"
+                  WidthRequest="120"
+                  Grid.Column="1"
+                  Margin="25,0"/>
         </Grid>
       <Grid Grid.Row="5">
         <Grid.ColumnDefinitions>
@@ -109,12 +121,16 @@
           <ColumnDefinition Width="10"/>
           <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-       <Label   x:Name="joinNumber"
+       <!--<Label   x:Name="joinNumber"
                  Text="* 인원선택"
                  TextColor="Black"
                  WidthRequest="120"
                   Margin="30,5"
-                 Grid.Column="1"/>           
+                 Grid.Column="1"/>-->
+        <Image    Source="Images/CreateRoom_number.png"
+                  WidthRequest="120"
+                  Grid.Column="1"
+                  Margin="25,0"/>
         </Grid>
       <Grid Grid.Row="7">
         <Grid.ColumnDefinitions>
@@ -132,12 +148,16 @@
           <ColumnDefinition Width="10"/>
           <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label  x:Name="time"
+        <!--<Label  x:Name="time"
                 Text="* 시간선택"
                 TextColor="Black"
                 WidthRequest="120"
                 Margin="30,5"
-                Grid.Column="1"/>
+                Grid.Column="1"/>-->
+        <Image    Source="Images/CreateRoom_time.png"
+                  WidthRequest="120"
+                  Grid.Column="1"
+                  Margin="25,0"/>
         </Grid>
       <Grid Grid.Row="9">
         <Grid.ColumnDefinitions>
@@ -155,12 +175,16 @@
           <ColumnDefinition Width="10"/>
           <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label  x:Name="insert_cost"
+        <!--<Label  x:Name="insert_cost"
                     Text="예상비용"
                     TextColor="Black"
                     WidthRequest="120"
                 Margin="30,5"
-                 Grid.Column="1"/>
+                 Grid.Column="1"/>-->
+        <Image    Source="Images/CreateRoom_ex.png"
+                  WidthRequest="120"
+                  Grid.Column="1"
+                  Margin="25,0"/>
         </Grid>
       <Grid Grid.Row="11">
         <Grid.ColumnDefinitions>

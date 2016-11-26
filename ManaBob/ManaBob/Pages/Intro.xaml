@@ -1,14 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ManaBob.Pages.Intro">
+             x:Class="ManaBob.Pages.Intro"
+             BackgroundImage="Images/main.PNG">
+
+<Grid>
+
+
+  <Grid >
+    <Grid.RowDefinitions >
+      <RowDefinition Height="2*"/>
+      <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
  
-    <StackLayout Orientation="Vertical">
+      <Grid Grid.Row="0">
+        <Image    Source="Images/mainTitle.png"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  HeightRequest="150" WidthRequest="300" />  
+      </Grid>
+
+    <Grid Grid.Row="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="1*"/>
+        <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+              
+          <Image 
+                 Source="Images/facebookmark.png"
+                 Grid.Row="0"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 HeightRequest="60" WidthRequest="120"/>
+      <Button     x:Name="confirmButton"
+                  HorizontalOptions="Center"
+                  HeightRequest="60" WidthRequest="120"
+                  Margin="10"
+                  Grid.Row="0"/>
+          <Image Source="Images/IntroPage_login.png"
+                 Grid.Row="1"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 HeightRequest="60" WidthRequest="120"/>
+      <Button     x:Name="loginButton"
+                  HorizontalOptions="Center"
+                  HeightRequest="60" WidthRequest="120"
+                  Margin="10" 
+                  Grid.Row="1"/>
+
+</Grid>
+  </Grid>
+    <!--<StackLayout Orientation="Vertical">
       <Entry x:Name="EntryID"  Placeholder="ID" />
       <Entry x:Name="EntryPWD" Placeholder="Password" />
 
       <Button Text="Enter"
               Clicked="GoToLoginPage"></Button>
-    </StackLayout>
-  
+    </StackLayout>-->
+  </Grid>
 </ContentPage>

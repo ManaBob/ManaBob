@@ -1,32 +1,33 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
 
 using System.Net;
 using System.Net.Sockets;
 
 using ManaBob.Services;
 
-
-namespace ManaBob.UWP.Services
+namespace ManaBob.Droid.Services
 {
-
     /// <summary>
-    ///     `INetService` Implementation for Universal Windows Platform
+    ///     `INetService` Implementation for Android Platform
     /// </summary>
     /// <seealso cref="ManaBob.Services.INetService"/>
-    public class UWPNetService : INetService
+    public class NetService : INetService
     {
         Socket sock = new Socket(AddressFamily.InterNetworkV6, 
                                  SocketType.Stream, 
                                  ProtocolType.Tcp);
 
-        /// <summary>
-        ///     Implicitly connect to remote server.
-        /// </summary>
-        public UWPNetService(IPEndPoint serverEp)
+        public NetService(IPEndPoint serverEp)
         {
             sock.Connect(serverEp);
         }
@@ -59,7 +60,7 @@ namespace ManaBob.UWP.Services
         /// </summary>
         /// <seealso cref="ManaBob.Request"/>
         /// <seealso cref="ManaBob.Response"/>
-        Task<Response> INetService.Send(Request _req)
+        Task<Response> INetService.Request(Request _req)
         {
             var req_json = Format.ToJson(_req);
             Byte[] buffer = Encoding.UTF8.GetBytes(req_json);
@@ -85,15 +86,6 @@ namespace ManaBob.UWP.Services
             }
         }
 
-
-        EventHandler<Notification> notiHandler = (s, e)=> { };
-
-        public EventHandler<Notification> OnNotify
-        {
-            get { return notiHandler; }
-            set { notiHandler = value; }
-        }
-
         /// <summary>
         ///     Dispose the inner resources
         /// </summary>
@@ -101,6 +93,6 @@ namespace ManaBob.UWP.Services
         {
             sock.Dispose();
         }
-    }
 
+    }
 }

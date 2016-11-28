@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+
 using ManaBob;
+using ManaBob.ViewModel;
 
 namespace ManaBob.Pages
 {
@@ -36,55 +38,70 @@ namespace ManaBob.Pages
     }
 
 
-    public class RoomDataTemplate
-    {
-        TextCell cell;
-    }
-
 
 	public partial class RoomList : ContentPage
 	{
-        Navigator navi;
-        Repo<NavigationPage> pages;
+        Navigator            navi      = AppCore.Services.Resolve<Navigator>();
+        Repo<ContentPage>    pages     = AppCore.Services.Resolve<Repo<ContentPage>>();
+        RoomListViewModel    viewModel = AppCore.Services.Resolve<RoomListViewModel>();
 
-        public RoomList (Navigator _navi, Repo<NavigationPage> _pages)
+        public RoomList ()
 		{
-            navi = _navi;
-            pages = _pages;
-			InitializeComponent ();
+            // Binding Context
+            viewModel.AllRooms  = RoomListTest.GetRoomList();
+            this.BindingContext = viewModel;
 
-            var menuStrings = new List<String>
-            {
-                "한식",
-                "양식",
-                "일식",
-                "중식",
-                "학식"
-            };
+            // ---- ---- ---- ---- ----
 
-            foreach(var str in menuStrings)
+            // Load XAML objects
+            InitializeComponent();
+
+            // Picker : Menu/Capacities
+            foreach(String menu in viewModel.Menus)
             {
-                menuPick.Items.Add(str);
+                //"한식",
+                //"양식",
+                //"일식",
+                //"중식",
+                //"학식"
+                menuPick.Items.Add(menu);
             }
+            foreach (String size in viewModel.Capacities)
 
-            //List<Room> rooms = RoomListTest.GetRoomList();
-            roomListView.ItemTapped += (sender, args)=>
-            {
-                var item = args.Item as Room;
-                if(item == null)
-                {
-                    return;
-                }
-               // this.appName.Text = item.Name;
-                roomListView.SelectedItem = null;
-            };
+            // ---- ---- ---- ---- ----
 
-
-            roomListView.ItemTemplate = new DataTemplate(typeof(TextCell));
-            roomListView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
-
-            roomListView.ItemsSource = RoomListTest.GetRoomList();
+            roomListView.ItemSelected   += OnRoomSelected;
         }
 
-	}
+
+        protected void OnRoomSelected(object _sender, SelectedItemChangedEventArgs _ev)
+        {
+            var item = _ev.SelectedItem as Room;
+            if (item == null)
+            {
+                return;
+            }
+            //this.appName.Text = item.Name;
+            roomListView.SelectedItem = null;
+
+
+            var next = pages.Resolve<ChatRoom>();
+            navi.PushAsyncTo(next);
+        }
+
+        protected async void OnLogoutButtonClicked(object _sender, EventArgs _ev)
+        {
+            bool success = await viewModel.Logout(AppCore.CurrentUser);
+            if(success == true)
+            {
+                AppCore.CurrentUser = null;
+                navi.PopAsync();
+            }
+            else
+            {
+                DisplayAlert("Logout Failed", "OnLogoutButtonClicked", "OK");
+            }
+        }
+
+    }
 }

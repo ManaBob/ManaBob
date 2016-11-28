@@ -51,7 +51,30 @@ namespace ManaBob
         public MenuCode     Menu      { get; set; }
         public Decimal      Budget    { get; set; }
         public List<User>   Users     { get; set; }
+
+
+
+
+
+        /// <summary>
+        ///     현재 보유한 Room 들을 특정 기준으로 필터링
+        /// </summary>
+        public static List<Room> Filter(List<Room> _old)
+        {
+            return _old;
+        }
+
+        /// <summary>
+        ///     주어진 Room 들을 특정 기준으로 재정렬
+        /// </summary>
+        public static List<Room> Sort(List<Room> _old)
+        {
+            return _old;
+        }
+
     }
+
+
 
 }// namespace ManaBob
 

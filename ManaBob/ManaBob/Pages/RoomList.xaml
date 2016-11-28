@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ManaBob.Pages.RoomList">  
-  
+             x:Class="ManaBob.Pages.RoomList">
+
+  <!--Main Layout
+  <StackLayout Orientation="Vertical" 
+               BackgroundColor="#DDDDFF"
+               VerticalOptions="FillAndExpand">
+  -->
   <!--Main Grid-->
   <Grid>
     <Grid.RowDefinitions>
@@ -13,13 +18,16 @@
       <RowDefinition Height="1*"/>
     </Grid.RowDefinitions>
 
-    <!-- 0. Top Panel -->
-    <Grid Grid.Row="0">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="50"/>
-        <ColumnDefinition Width="1*"/>
-        <ColumnDefinition Width="50"/>
-      </Grid.ColumnDefinitions>
+    <!-- 2. Filter  -->
+    <Grid HeightRequest="50">
+      <!--3 Columns-->
+
+      <Button   x:Name="logOutBtn"
+                Grid.Column="1"
+                HeightRequest="50" WidthRequest="50"
+                Text="Out"
+                Clicked="OnLogoutButtonClicked"
+                />
 
       <!--Room Name-->
 
@@ -39,7 +47,6 @@
                 WidthRequest="50"
                 HeightRequest="50"/>
     </Grid>
-
 
 
     <!-- 1. Room Search -->
@@ -63,6 +70,7 @@
                       Grid.Column="1"
                       />
     </Grid>
+
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
@@ -95,7 +103,7 @@
           <ColumnDefinition Width="80"/>
           <ColumnDefinition Width="1*"/>
           <ColumnDefinition Width="80"/>
-              <ColumnDefinition Width="10"/>
+          <ColumnDefinition Width="10"/>
       </Grid.ColumnDefinitions>
 
       <Picker     x:Name="menuPick"
@@ -104,23 +112,24 @@
                   HorizontalOptions="CenterAndExpand"
                   />
       <TimePicker x:Name="timePick"
-                  Grid.Column="2"    
-                                    HorizontalOptions="CenterAndExpand"
-
+                  Grid.Column="2"  
+                  HorizontalOptions="CenterAndExpand"
                   />
       <Picker     x:Nmae="sizePick"
                   Grid.Column="3  "
-                  WidthRequest="80"
-                                    HorizontalOptions="CenterAndExpand"
-
+                  WidthRequest="80"                                    HorizontalOptions="CenterAndExpand"
                   />
     </Grid>
-  
+
     <!-- 3. Room List -->
-    <Grid Grid.Row="4" >
+    <Grid VerticalOptions="FillAndExpand">
       <ScrollView>
-        <ListView x:Name="roomListView">
-          <StackLayout Orientation="Vertical" >
+        <ListView x:Name="roomListView" ItemsSource="{Binding AllRooms}">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <TextCell Text="{Binding Name}" Detail="{Binding Budget}"/>
+              <!--제안된 템플릿 -->
+              <StackLayout Orientation="Vertical" >
                         <StackLayout Orientation="Horizontal" >
                             <Label      x:Name="roomNumberTextBlock"
                                             Text="001"
@@ -152,9 +161,11 @@
                         </StackLayout>
                        
                     </StackLayout>
-        </ListView>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+          </ListView>
       </ScrollView>
     </Grid>
+
   </Grid>
-  
 </ContentPage>

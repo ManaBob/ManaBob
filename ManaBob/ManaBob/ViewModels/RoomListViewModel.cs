@@ -1,35 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+
+using System.ComponentModel;
+using Xamarin.Forms;
+
+using ManaBob.Services;
 
 namespace ManaBob.ViewModel
 {
-    public class RoomListViewModel
+
+
+    public class RoomListViewModel : 
+            Xamarin.Forms.BindableObject
     {
-        // - Note
-        //      현재 보유한 Room 들을 특정 기준으로 필터링
-        // - To Do
-        //      전체 목록은 어디에 보관??
-        //      필터를 변경할 경우 오버헤드?
-        //      필터링 하면서 동기화하는 방법?
-        public static List<Room> Filter()
+
+        INetService netSvc = AppCore.Services.Resolve<INetService>();
+
+        /// <summary>
+        ///     Viewmodel Initialization
+        /// </summary>
+        public RoomListViewModel()
         {
-            throw new NotImplementedException();
+            Menus = new List<String>
+            {
+                "Unknown","Korean"
+            };
+
+            Capacities = new List<String>
+            {
+                "1", "2", "3", "4"
+            };
+
+            AllRooms = new List<Room>();
+            FilteredRooms = AllRooms;
         }
 
-        // - Note
-        //      주어진 Room 들을 특정 기준으로 재정렬
-        public static List<Room> Sort(List<Room> _list)
-        {
-            throw new NotImplementedException();
-        }
 
-        // - Note
-        //      사용자가 지정한 방에 입장
+        /// <summary>
+        ///     사용자가 지정한 방에 입장.
+        /// </summary>
         public void Enter(Room _room)
         {
             throw new NotImplementedException();
         }
+
+        public async Task<bool> Logout(User _currentUser)
+        {
+            Request reqOut = new Request(_currentUser,
+                                         Request.Category.Logout,
+                                         "Good Bye!");
+
+            Response res = await netSvc.Send(reqOut);
+            return res.Success;
+        }
+
+
+        public List<Room>   FilteredRooms { get; set; }
+        public List<Room>   AllRooms      { get; set; }
+
+        public List<String>     Menus       { get; set; }
+        public List<String>     Capacities  { get; set; }
 
     }
 

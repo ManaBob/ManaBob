@@ -59,12 +59,14 @@ namespace ManaBob.Pages
             // Picker : Menu/Capacities
             foreach(String menu in viewModel.Menus)
             {
+                //"한식",
+                //"양식",
+                //"일식",
+                //"중식",
+                //"학식"
                 menuPick.Items.Add(menu);
             }
             foreach (String size in viewModel.Capacities)
-            {
-                sizePick.Items.Add(size);
-            }
 
             // ---- ---- ---- ---- ----
 

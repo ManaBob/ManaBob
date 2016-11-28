@@ -71,7 +71,7 @@
     <Compile Include="Services\ILocalService.cs" />
     <Compile Include="Services\INetService.cs" />
     <Compile Include="ViewModels\ChatRoomViewModel.cs" />
-    <Compile Include="ViewModels\MakeRoomViewModel.cs" />
+    <Compile Include="ViewModels\CreateRoomViewModel.cs" />
     <Compile Include="ViewModels\RoomListViewModel.cs" />
     <Compile Include="ViewModels\RoomSettingViewModel.cs" />
   </ItemGroup>

@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+
+using ManaBob.Services;
+
 
 namespace ManaBob.ViewModel
 {
-    public class MakeRoomViewModel
+    public class CreateRoomViewModel :
+            Xamarin.Forms.BindableObject
     {
 
         // - Note

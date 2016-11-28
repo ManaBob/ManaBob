@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ManaBob.Pages.ChatRoom">
+             x:Class="ManaBob.Pages.ChatRoom"
+             >
+
   <!--Main Grid-->
-  <Grid BackgroundColor="#FFFFEE">
+  <Grid BackgroundColor="#FFFFEE" >
     <Grid.RowDefinitions>
       <RowDefinition Height="50"/>
       <RowDefinition Height="1*"/>
@@ -14,6 +16,7 @@
     <Grid Grid.Row="0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="50"/>
+        <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="50"/>
       </Grid.ColumnDefinitions>
@@ -22,18 +25,24 @@
       <Image  x:Name="logoImage"
               Grid.Column="0"
               Source="Images/dish.png"
-              HeightRequest="50" WidthRequest="50"
+              WidthRequest="50"
               />
+      <Button   x:Name="backBtn"
+                Grid.Column="1"
+                WidthRequest="50"
+                Text="Back"
+                Clicked="OnBackButtonClicked"
+                />
       <!--Room Name-->
       <Label  x:Name="roomName"
-              Grid.Column="1"
+              Grid.Column="2"
               HeightRequest="50"
               Text="Room's Name"
               />
       <!--Options for Room Owner-->
       <!--방장에게만 보이는 수정 버튼-->
       <Button x:Name="changeButton"
-              Grid.Column="2"
+              Grid.Column="3"
               HeightRequest="50" WidthRequest="50"
               />
     </Grid>
@@ -61,7 +70,7 @@
     </Grid>
 
     <!-- User Input Panel -->
-    <Grid Grid.Row="2">
+    <Grid Grid.Row="2" HeightRequest="50">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="1*"/>
@@ -77,13 +86,13 @@
       <!--User's Input Input TextBox-->
       <Entry  x:Name="userInput"
               Grid.Column="1"
-              HeightRequest="50"
               Placeholder="Message here"
               />
       <!--Send Button-->
       <Button x:Name="sendButton"
               Grid.Column="2"
               HeightRequest="50" WidthRequest="50"
+              Clicked="OnSendButtonClicked"
               Image="Images/send.png"
               />
     </Grid>

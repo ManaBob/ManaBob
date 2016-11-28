@@ -39,7 +39,7 @@ namespace ManaBob.Services
             }
 
             // Fake Login
-            if (_req.Sender != null)
+            if (_req.Type == Request.Category.Login)
             {
                 return Task<Response>.Factory.StartNew(()=>
                 {
@@ -49,6 +49,45 @@ namespace ManaBob.Services
                     return res;
                 });
             }
+
+            // Fake Logout
+            else if (_req.Type == Request.Category.Logout)
+            {
+                return Task<Response>.Factory.StartNew(() =>
+                {
+                    var res = new Response(_req, true, Format.ToJson(_req));
+                    return res;
+                });
+            }
+
+            // Fake Enter
+            else if(_req.Type == Request.Category.EnterRoom)
+            {
+                return Task<Response>.Factory.StartNew(() =>
+                {
+                    var res = new Response(_req, true, Format.ToJson(_req));
+                    return res;
+                });
+
+            }
+
+            // Fake Leave
+            else if (_req.Type == Request.Category.LeaveRoom)
+            {
+                return Task<Response>.Factory.StartNew(() =>
+                {
+                    var res = new Response(_req, true, Format.ToJson(_req));
+                    return res;
+                });
+
+            }
+
+
+
+
+
+
+
 
             // The others are not implemented yet.
             else

@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ManaBob.Pages.RoomList">  
-  
-  <!--Main Grid-->
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="1*"/>
-    </Grid.RowDefinitions>
+             x:Class="ManaBob.Pages.RoomList"
+             >
+
+  <!--Main Layout-->
+  <StackLayout Orientation="Vertical" 
+               BackgroundColor="#DDDDFF"
+               VerticalOptions="FillAndExpand">
 
     <!-- 0. Top Panel -->
-    <Grid Grid.Row="0">
+    <Grid HeightRequest="50">
       <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="50"/>
@@ -26,33 +24,40 @@
               Source="Images/dish.png"
               HeightRequest="50" WidthRequest="50"
               />
-      
+      <Button   x:Name="logOutBtn"
+                Grid.Column="1"
+                HeightRequest="50" WidthRequest="50"
+                Text="Out"
+                Clicked="OnLogoutButtonClicked"
+                />
+
       <!--Room Name-->
       <Label  x:Name="appName"
-              Grid.Column="1"
+              Grid.Column="2"
               HeightRequest="50"
               Text="만나밥"
               HorizontalTextAlignment="Center"
               VerticalTextAlignment="Center"
               />
 
-
       <!--Dummy Button for check-->
-      <Button 
-              BackgroundColor="Gray"
-              Grid.Column="2"
+      <Button BackgroundColor="Gray"
+              Grid.Column="3"
               HeightRequest="50" WidthRequest="50"
               />
     </Grid>
 
 
     <!-- 1. Room Search -->
-    <SearchBar x:Name="searchBar"
-               Grid.Row="1"
-               />
+    <!--
+    <SearchBar x:Name="searchBar" 
+               HeightRequest="50" 
+               FontSize="20" />
+    -->
 
     <!-- 2. Filter  -->
-    <Grid Grid.Row="2">
+    <Grid HeightRequest="50">
+      <!--3 Columns-->
       <Grid.ColumnDefinitions>
         <ColumnDefinition>
           <ColumnDefinition Width="1*"/>
@@ -63,27 +68,30 @@
 
       <Picker     x:Name="menuPick"
                   Grid.Column="0"
+                  HeightRequest="50"
                   />
       <TimePicker x:Name="timePick"
                   Grid.Column="1"
+                  HeightRequest="50"
                   />
       <Picker     x:Name="sizePick"
                   Grid.Column="2"
+                  HeightRequest="50"
                   />
     </Grid>
 
     <!-- 3. Room List -->
-    <Grid Grid.Row="3" BackgroundColor="Silver">
+    <Grid VerticalOptions="FillAndExpand">
       <ScrollView>
         <ListView x:Name="roomListView" ItemsSource="{Binding AllRooms}">
           <ListView.ItemTemplate>
             <DataTemplate>
-              <TextCell Text="{Binding Name}" Detail="{Binding Budget}"/>               
+              <TextCell Text="{Binding Name}" Detail="{Binding Budget}"/>
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
       </ScrollView>
     </Grid>
-  </Grid>
-  
+
+  </StackLayout>
 </ContentPage>

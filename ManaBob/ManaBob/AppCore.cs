@@ -31,7 +31,7 @@ namespace ManaBob
         /// <summary>
         ///     Page dictionary to minimize GC latency and easy code
         /// </summary>
-        Repo<NavigationPage>    pages       = new Repo<NavigationPage>();
+        Repo<ContentPage>    pages       = new Repo<ContentPage>();
 
         /// <summary>
         ///     Navigation Handle for UI
@@ -57,23 +57,24 @@ namespace ManaBob
             Services.Register<INetService>(_net);
 
             // Utility
-            Services.Register<Repo<NavigationPage>>(pages);
+            Services.Register<Repo<ContentPage>>(pages);
             Services.Register<Navigator>(navi);
 
             // ViewModel
             Services.Register<RoomListViewModel>(new RoomListViewModel());
+            Services.Register<ChatRoomViewModel>(new ChatRoomViewModel());
 
 
-            var intro       = new NavigationPage(new Pages.Intro());
-            var roomlist    = new NavigationPage(new Pages.RoomList());
-            //var chatroom = new NavigationPage(new ChatRoom(navi, pages));
+            var intro       = new Pages.Intro();
+            var roomlist    = new Pages.RoomList();
+            var chatroom    = new Pages.ChatRoom();
 
             pages.Register<Intro>(intro);
             pages.Register<RoomList>(roomlist);
-            //pages.Register<RoomList>(chatroom);
+            pages.Register<ChatRoom>(chatroom);
 
             // Mandatory for Framework's initialization
-            this.MainPage = intro;
+            navi.GoAsyncTo(intro);
         }
 
         protected override void OnStart()

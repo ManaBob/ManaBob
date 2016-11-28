@@ -41,9 +41,9 @@ namespace ManaBob.Pages
 
 	public partial class RoomList : ContentPage
 	{
-        Navigator               navi      = AppCore.Services.Resolve<Navigator>();
-        Repo<NavigationPage>    pages     = AppCore.Services.Resolve<Repo<NavigationPage>>();
-        RoomListViewModel       viewModel = AppCore.Services.Resolve<RoomListViewModel>();
+        Navigator            navi      = AppCore.Services.Resolve<Navigator>();
+        Repo<ContentPage>    pages     = AppCore.Services.Resolve<Repo<ContentPage>>();
+        RoomListViewModel    viewModel = AppCore.Services.Resolve<RoomListViewModel>();
 
         public RoomList ()
 		{
@@ -69,19 +69,8 @@ namespace ManaBob.Pages
             // ---- ---- ---- ---- ----
 
             roomListView.ItemSelected   += OnRoomSelected;
-            roomListView.ItemTapped     += OnRoomTapped;
         }
 
-        protected void OnRoomTapped(object _sender, ItemTappedEventArgs _ev)
-        {
-            var item = _ev.Item as Room;
-            if (item == null)
-            {
-                return;
-            }
-            this.appName.Text = item.Name;
-            roomListView.SelectedItem = null;
-        }
 
         protected void OnRoomSelected(object _sender, SelectedItemChangedEventArgs _ev)
         {
@@ -90,8 +79,26 @@ namespace ManaBob.Pages
             {
                 return;
             }
-            this.appName.Text = item.Name;
+            //this.appName.Text = item.Name;
             roomListView.SelectedItem = null;
+
+
+            var next = pages.Resolve<ChatRoom>();
+            navi.PushAsyncTo(next);
+        }
+
+        protected async void OnLogoutButtonClicked(object _sender, EventArgs _ev)
+        {
+            bool success = await viewModel.Logout(AppCore.CurrentUser);
+            if(success == true)
+            {
+                AppCore.CurrentUser = null;
+                navi.PopAsync();
+            }
+            else
+            {
+                DisplayAlert("Logout Failed", "OnLogoutButtonClicked", "OK");
+            }
         }
 
     }

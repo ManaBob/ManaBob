@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
+
+using ManaBob.Services;
 
 namespace ManaBob.ViewModel
 {
@@ -33,13 +36,71 @@ namespace ManaBob.ViewModel
     public class ChatRoomViewModel : 
             Xamarin.Forms.BindableObject
     {
-        List<Chat> chatlist;
+        INetService     netSvc      = AppCore.Services.Resolve<INetService>();
+
+        List<Chat>      chatlist    = new List<Chat>();
+
+        public ChatRoomViewModel()
+        {
+
+        }
+
         /// <summary>
         ///     서버로 메세지를 전송
         /// </summary>
-        public void Send(Message _msg)
+        public Task<Message> Send(Message _msg)
         {
-            throw new NotImplementedException();
+            return Task<Message>.Factory.StartNew(()=>
+            {
+                try
+                {
+                    netSvc.Send(_msg);
+                    // Server will set the valid ID for the message.
+                    // If not, the ID value is 0
+                    _msg.ID = 239164;
+                    return _msg;
+                }
+                catch(Exception _exc)
+                {
+                    return _msg;
+                }
+            });
+            
+        }
+
+        /// <summary>
+        ///     방으로 진입
+        /// </summary>
+        public async void Enter()
+        {
+            Request roomEnter = new Request(AppCore.CurrentUser,
+                                            Request.Category.EnterRoom,
+                                            "Hello!");
+
+            Response res = await netSvc.Send(roomEnter);
+
+            if(res.Success == true)
+            {
+
+            }
+
+        }
+
+        /// <summary>
+        ///     현재 방을 떠남
+        /// </summary>
+        public async void Leave()
+        {
+            Request roomLeave = new Request(AppCore.CurrentUser,
+                                            Request.Category.LeaveRoom,
+                                            "Bye!");
+
+            Response res = await netSvc.Send(roomLeave);
+
+            if (res.Success == true)
+            {
+
+            }
         }
 
         /// <summary>
@@ -47,18 +108,20 @@ namespace ManaBob.ViewModel
         /// </summary>
         public void Update()
         {
-            throw new NotImplementedException();
+            OnPropertyChanged();
         }
+
 
         /// <summary>
-        ///     현재 방을 떠남
+        ///     Trigger UI update 
         /// </summary>
-        public void Leave()
+        public void NotifyChange()
         {
-            throw new NotImplementedException();
+            OnPropertyChanged("Chats");
         }
 
-        public List<Chat> Chats {
+        public List<Chat> Chats
+        {
             get
             {
                 return chatlist;
@@ -66,7 +129,7 @@ namespace ManaBob.ViewModel
             set
             {
                 chatlist = value;
-                OnPropertyChanged();
+                this.NotifyChange();
             }
         }
 

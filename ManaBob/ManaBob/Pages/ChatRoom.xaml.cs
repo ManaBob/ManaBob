@@ -29,53 +29,50 @@ namespace ManaBob.Pages
         }
     }
 
+
+
 	public partial class ChatRoom : ContentPage
 	{
-        Navigator navi;
-        Repo<NavigationPage> pages;
+        Navigator            navi      = AppCore.Services.Resolve<Navigator>();
+        Repo<ContentPage>    pages     = AppCore.Services.Resolve<Repo<ContentPage>>();
+        ChatRoomViewModel    viewModel = AppCore.Services.Resolve<ChatRoomViewModel>();
 
-        ChatRoomViewModel viewModel = new ChatRoomViewModel();
-
-
-        public ChatRoom (Navigator _navi, Repo<NavigationPage> _pages)
+        public ChatRoom ()
 		{
-            navi = _navi;
-            pages = _pages;
-
-            // Load XAML
-            InitializeComponent();
+            InitializeComponent();            // Load XAML
 
             this.BindingContext = viewModel;
             this.sendButton.Clicked += OnSendButtonClicked;
 		}
 
-
-        void MoreChats()
+        // 메세지가 제대로 Display 되지 않음.
+        protected async void OnSendButtonClicked(object _sender, EventArgs _ev)
         {
-            if(viewModel.Chats == null)
+            Message msg = new Message(AppCore.CurrentUser.ID,
+                                      AppCore.CurrentUser.ID,
+                                      this.userInput.Text);
+
+            msg = await viewModel.Send(msg);
+            if(msg.ID == 0)
             {
-                viewModel.Chats = new List<Chat>();
+                DisplayAlert("Send Failed", "OnSendButtonClicked", "OK");
                 return;
             }
 
-            List<Chat> targetlist = new List<Chat>(viewModel.Chats);
-            Chat chat = new Chat(ChatRoomTest.GetMessage());
-            targetlist.Add(chat);
-            //foreach (Message msg in ChatRoomTest.GetMessages())
-            //{
-            //    Chat chat = new ViewModel.Chat(msg);
-            //    targetlist.Add(chat);
-            //}
-            // Update all
-            viewModel.Chats = targetlist;
+            Chat c = new ViewModel.Chat(msg);
 
+            viewModel.Chats.Add(c);
+            // Notify UI to update
+            viewModel.NotifyChange();
+
+            // Clear the message
+            this.userInput.Text = "";
         }
 
 
-        void OnSendButtonClicked(object _sender, EventArgs _ev)
+        protected void OnBackButtonClicked(object _sender, EventArgs _ev)
         {
-            this.MoreChats();
+            navi.PopAsync();
         }
-
     }
 }

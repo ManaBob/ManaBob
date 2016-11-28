@@ -1,32 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 using System.ComponentModel;
 using Xamarin.Forms;
 
+using ManaBob.Services;
+
 namespace ManaBob.ViewModel
 {
+
 
     public class RoomListViewModel : 
             Xamarin.Forms.BindableObject
     {
 
-        /// <summary>
-        ///     현재 보유한 Room 들을 특정 기준으로 필터링
-        /// </summary>
-        public static List<Room> Filter(List<Room> _old)
-        {
-            return _old;            
-        }
-
-        /// <summary>
-        ///     주어진 Room 들을 특정 기준으로 재정렬
-        /// </summary>
-        public static List<Room> Sort(List<Room> _old)
-        {
-            return _old;
-        }
+        INetService netSvc = AppCore.Services.Resolve<INetService>();
 
         /// <summary>
         ///     Viewmodel Initialization
@@ -56,8 +46,19 @@ namespace ManaBob.ViewModel
             throw new NotImplementedException();
         }
 
-        public List<Room> FilteredRooms { get; set; }
-        public List<Room> AllRooms      { get; set; }
+        public async Task<bool> Logout(User _currentUser)
+        {
+            Request reqOut = new Request(_currentUser,
+                                         Request.Category.Logout,
+                                         "Good Bye!");
+
+            Response res = await netSvc.Send(reqOut);
+            return res.Success;
+        }
+
+
+        public List<Room>   FilteredRooms { get; set; }
+        public List<Room>   AllRooms      { get; set; }
 
         public List<String>     Menus       { get; set; }
         public List<String>     Capacities  { get; set; }

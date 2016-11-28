@@ -13,7 +13,7 @@ namespace ManaBob.Pages
     public partial class Intro : ContentPage
     {
         Navigator navi              = AppCore.Services.Resolve<Navigator>();
-        Repo<NavigationPage> pages  = AppCore.Services.Resolve<Repo<NavigationPage>>();
+        Repo<ContentPage> pages     = AppCore.Services.Resolve<Repo<ContentPage>>();
 
         INetService netSvc          = AppCore.Services.Resolve<INetService>();
         
@@ -81,6 +81,9 @@ namespace ManaBob.Pages
             // Go to Room List
             var next = pages.Resolve<RoomList>();
             navi.PushAsyncTo(next);
+
+            EntryID.Text = "";
+            EntryPWD.Text = "";
         }
 
     }

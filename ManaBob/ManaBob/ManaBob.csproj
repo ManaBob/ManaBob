@@ -40,6 +40,7 @@
     <Compile Include="Controls\RoomViewCell.cs" />
     <Compile Include="Models\Format.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Response.cs" />
@@ -70,7 +71,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FakeAuth.cs" />
-    <Compile Include="Services\FakeLocal.cs" />
+    <Compile Include="Services\FakeNet.cs" />
     <Compile Include="Services\IAuthService.cs" />
     <Compile Include="Services\IAuthToken.cs" />
     <Compile Include="Services\ILocalService.cs" />

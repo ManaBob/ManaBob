@@ -4,11 +4,19 @@
              x:Class="ManaBob.Pages.Intro">
  
     <StackLayout Orientation="Vertical">
-      <Entry x:Name="EntryID"  Placeholder="ID" />
-      <Entry x:Name="EntryPWD" Placeholder="Password" />
+      <Entry x:Name="EntryID"  
+             Placeholder="ID" 
+             />
+      <Entry x:Name="EntryPWD" 
+             Placeholder="Password" 
+             IsPassword="True" 
+             />
 
-      <Button Text="Enter"
-              Clicked="GoToLoginPage"></Button>
+      <Button x:Name="LoginBtn" 
+              Text="Enter" 
+              Clicked="OnLoginBtnClicked"
+              />
+      
     </StackLayout>
   
 </ContentPage>

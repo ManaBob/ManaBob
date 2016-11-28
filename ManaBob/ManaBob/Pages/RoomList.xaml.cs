@@ -37,42 +37,42 @@ namespace ManaBob.Pages
         }
     }
 
+
+
 	public partial class RoomList : ContentPage
 	{
-        Navigator navi;
-        Repo<NavigationPage> pages;
+        Navigator               navi      = AppCore.Services.Resolve<Navigator>();
+        Repo<NavigationPage>    pages     = AppCore.Services.Resolve<Repo<NavigationPage>>();
+        RoomListViewModel       viewModel = AppCore.Services.Resolve<RoomListViewModel>();
 
-        public RoomList (Navigator _navi, Repo<NavigationPage> _pages)
+        public RoomList ()
 		{
-            navi = _navi;
-            pages = _pages;
-
-            var viewModel = new RoomListViewModel();
-            viewModel.AllRooms = RoomListTest.GetRoomList();
+            // Binding Context
+            viewModel.AllRooms  = RoomListTest.GetRoomList();
             this.BindingContext = viewModel;
 
-            // Load XAML
+            // ---- ---- ---- ---- ----
+
+            // Load XAML objects
             InitializeComponent();
 
-
-            var strings = new List<String>
+            // Picker : Menu/Capacities
+            foreach(String menu in viewModel.Menus)
             {
-                "menu1",
-                "menu2",
-                "menu3",
-            };
-
-            foreach(var str in strings)
-            {
-                menuPick.Items.Add(str);
+                menuPick.Items.Add(menu);
             }
+            foreach (String size in viewModel.Capacities)
+            {
+                sizePick.Items.Add(size);
+            }
+
+            // ---- ---- ---- ---- ----
 
             roomListView.ItemSelected   += OnRoomSelected;
             roomListView.ItemTapped     += OnRoomTapped;
-
         }
 
-        void OnRoomTapped(object _sender, ItemTappedEventArgs _ev)
+        protected void OnRoomTapped(object _sender, ItemTappedEventArgs _ev)
         {
             var item = _ev.Item as Room;
             if (item == null)
@@ -83,7 +83,7 @@ namespace ManaBob.Pages
             roomListView.SelectedItem = null;
         }
 
-        void OnRoomSelected(object _sender, SelectedItemChangedEventArgs _ev)
+        protected void OnRoomSelected(object _sender, SelectedItemChangedEventArgs _ev)
         {
             var item = _ev.SelectedItem as Room;
             if (item == null)

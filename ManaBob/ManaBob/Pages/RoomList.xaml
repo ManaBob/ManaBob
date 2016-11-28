@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ManaBob.Pages.RoomList">  
+  
   <!--Main Grid-->
   <Grid>
     <Grid.RowDefinitions>
@@ -66,7 +67,7 @@
       <TimePicker x:Name="timePick"
                   Grid.Column="1"
                   />
-      <Picker     x:Nmae="sizePick"
+      <Picker     x:Name="sizePick"
                   Grid.Column="2"
                   />
     </Grid>

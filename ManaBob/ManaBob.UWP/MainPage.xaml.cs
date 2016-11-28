@@ -26,16 +26,14 @@ namespace ManaBob.UWP
         public MainPage()
         {
             this.InitializeComponent();
-            IPAddress   serviceAddr = IPAddress.IPv6Loopback;
-            int         servicePort = 31357;
-            IPEndPoint  serverEp = new IPEndPoint(serviceAddr, servicePort);
 
+            //IPAddress   serviceAddr = IPAddress.IPv6Loopback;
+            //int         servicePort = 31357;
+            //IPEndPoint  serverEp = new IPEndPoint(serviceAddr, servicePort);
             //var netSvc      = new Services.UWPNetService(serverEp);
-            //var netSvc      = new ManaBob.Services.();
-            //var localSvc    = new ManaBob.Services.FakeLocal();
-            //var authSvc     = new ManaBob.Services.FakeAuth();
 
-            var Core = new ManaBob.AppCore();
+            var netSvc  = new ManaBob.Services.FakeNet();
+            var Core    = new ManaBob.AppCore(netSvc);
             LoadApplication(Core);
         }
         

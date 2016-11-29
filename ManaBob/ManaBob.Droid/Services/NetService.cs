@@ -60,7 +60,7 @@ namespace ManaBob.Droid.Services
         /// </summary>
         /// <seealso cref="ManaBob.Request"/>
         /// <seealso cref="ManaBob.Response"/>
-        Task<Response> INetService.Request(Request _req)
+        Task<Response> INetService.Send(Request _req)
         {
             var req_json = Format.ToJson(_req);
             Byte[] buffer = Encoding.UTF8.GetBytes(req_json);
@@ -84,6 +84,14 @@ namespace ManaBob.Droid.Services
             {
                 return sock.Connected;
             }
+        }
+
+        EventHandler<Notification> onNotiImpl;
+
+        public EventHandler<Notification> OnNotify
+        {
+            get{    return onNotiImpl;  }
+            set{    onNotiImpl = value; }
         }
 
         /// <summary>

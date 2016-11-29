@@ -61,6 +61,7 @@ namespace ManaBob.Pages
 
         }
 
+
         protected void LoginResponseHandler(Response _res)
         {
             if(_res.Success == false)
@@ -85,6 +86,7 @@ namespace ManaBob.Pages
             EntryID.Text = "";
             EntryPWD.Text = "";
         }
+
 
     }
 

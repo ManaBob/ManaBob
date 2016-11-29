@@ -63,15 +63,18 @@ namespace ManaBob
             // ViewModel
             Services.Register<RoomListViewModel>(new RoomListViewModel());
             Services.Register<ChatRoomViewModel>(new ChatRoomViewModel());
+            Services.Register<CreateRoomViewModel>(new CreateRoomViewModel());
 
 
             var intro       = new Pages.Intro();
             var roomlist    = new Pages.RoomList();
             var chatroom    = new Pages.ChatRoom();
+            var createroom  = new Pages.CreateRoom();
 
             pages.Register<Intro>(intro);
             pages.Register<RoomList>(roomlist);
             pages.Register<ChatRoom>(chatroom);
+            pages.Register<CreateRoom>(createroom);
 
             // Mandatory for Framework's initialization
             navi.GoAsyncTo(intro);

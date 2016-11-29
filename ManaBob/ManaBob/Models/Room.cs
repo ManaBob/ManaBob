@@ -53,7 +53,10 @@ namespace ManaBob
         public List<User>   Users     { get; set; }
 
 
-
+        public Room()
+        {
+            this.Users = new List<User>();
+        }
 
 
         /// <summary>

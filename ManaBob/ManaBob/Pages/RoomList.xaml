@@ -3,123 +3,127 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ManaBob.Pages.RoomList">
 
-  <!--Main Layout
-  <StackLayout Orientation="Vertical" 
+  <!--Main Layout -->
+  <StackLayout Orientation="Vertical"
                BackgroundColor="#DDDDFF"
                VerticalOptions="FillAndExpand">
-  -->
-  <!--Main Grid-->
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="33"/>
-      <RowDefinition Height="1*"/>
-    </Grid.RowDefinitions>
 
-    <!-- 2. Filter  -->
+    <!-- 0. Top Panel -->
     <Grid HeightRequest="50">
-      <!--3 Columns-->
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50"/>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="50"/>
+      </Grid.ColumnDefinitions>
 
+      <!-- Sign Out -->
       <Button   x:Name="logOutBtn"
-                Grid.Column="1"
+                Grid.Column="0"
                 HeightRequest="50" WidthRequest="50"
                 Text="Out"
                 Clicked="OnLogoutButtonClicked"
                 />
 
-      <!--Room Name-->
-
+      <!-- Room Name -->
       <Label    Grid.Column="1" 
                 Text="만 나 밥" 
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 FontSize="30"/>
 
-      <!--Dummy Button for check-->
+      <!-- Create Room -->
+      <Image    Source="Images/createRoom.png" 
+                Grid.Column="2"/>
 
-        <Image    Source="Images/createRoom.png" 
-                  Grid.Column="2"/>
-
-      <Button   x:Name="createRoomButton"
+      <Button   x:Name="createRoomBtn"
                 Grid.Column="2"
                 WidthRequest="50"
-                HeightRequest="50"/>
+                HeightRequest="50"
+                Clicked="OnCreateBtnClicked"
+                />
     </Grid>
 
 
     <!-- 1. Room Search -->
-    <Grid Grid.Row="1">
+    <Grid HeightRequest="40">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="80"/>
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="10"/>
       </Grid.ColumnDefinitions>
-        <!--<Label    Text="방제목"
-                  Grid.Column="0"
-                  VerticalOptions="Center"
-                  HorizontalOptions="Center"
-                  FontSize="15"/>-->
-       <Image     Source="Images/RoomList_tilte.png"
+      <!--
+      <Label    Text="방제목"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontSize="15"/>-->
+      <Image      Source="Images/RoomList_tilte.png"
                   Grid.Column="0"
                   VerticalOptions="Center"
                   HorizontalOptions="Center"
                   />
-        <SearchBar    x:Name="searchBar"
-                      Grid.Column="1"
-                      />
+      <SearchBar  x:Name="searchBar"
+                  Grid.Column="1"
+                  />
     </Grid>
 
-    <Grid Grid.Row="2">
-      <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="80"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="80"/>
-              <ColumnDefinition Width="10"/>
-      </Grid.ColumnDefinitions>
-     <Label    Text="메뉴선택"
-               Grid.Column="1"
-                  VerticalOptions="Center"
-                  HorizontalOptions="Center"
-                  FontSize="15"/>
-     <Label    Text="시간선택"
-               Grid.Column="2"
-                  VerticalOptions="Center"
-                  HorizontalOptions="Center"
-                  FontSize="15"/>
-     <Label    Text="인원선택"
-               Grid.Column="3"
-                  VerticalOptions="Center"
-                  HorizontalOptions="Center"
-                  FontSize="15"/>
-     </Grid>
-        
+
     <!-- 2. Filter  -->
-    <Grid Grid.Row="3">
+    <Grid HeightRequest="80">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="35"/>
+        <RowDefinition Height="35"/>
+      </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="80"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="80"/>
-          <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="80"/>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="80"/>
+        <ColumnDefinition Width="10"/>
       </Grid.ColumnDefinitions>
-
+    
+      <Label      Text="메뉴선택"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  FontSize="15"
+                  />
       <Picker     x:Name="menuPick"
+                  Grid.Row="1"
                   Grid.Column="1"
                   WidthRequest="80"
                   HorizontalOptions="CenterAndExpand"
                   />
+
+      <Label      Text="시간선택"
+                  Grid.Row="0"
+                  Grid.Column="2"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  FontSize="15"
+                  />
       <TimePicker x:Name="timePick"
-                  Grid.Column="2"  
+                  Grid.Row="1"
+                  Grid.Column="2"
                   HorizontalOptions="CenterAndExpand"
                   />
-      <Picker     x:Nmae="sizePick"
-                  Grid.Column="3  "
-                  WidthRequest="80"                                    HorizontalOptions="CenterAndExpand"
+
+      <Label      Text="인원선택"
+                  Grid.Row="0"
+                  Grid.Column="3"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  FontSize="15"
+                  />
+      <Picker     x:Name="sizePick"
+                  Grid.Row="1"
+                  Grid.Column="3"
+                  WidthRequest="80"
+                  HorizontalOptions="CenterAndExpand"
                   />
     </Grid>
+        
 
     <!-- 3. Room List -->
     <Grid VerticalOptions="FillAndExpand">
@@ -127,45 +131,45 @@
         <ListView x:Name="roomListView" ItemsSource="{Binding AllRooms}">
           <ListView.ItemTemplate>
             <DataTemplate>
-              <TextCell Text="{Binding Name}" Detail="{Binding Budget}"/>
-              <!--제안된 템플릿 -->
-              <StackLayout Orientation="Vertical" >
-                        <StackLayout Orientation="Horizontal" >
-                            <Label      x:Name="roomNumberTextBlock"
+            <TextCell Text="{Binding Name}" Detail="{Binding Budget}"/>
+            <!--제안된 템플릿 
+            <StackLayout Orientation="Vertical" >
+              <StackLayout Orientation="Horizontal" >
+                <Label      x:Name="roomNumberTextBlock"
                                             Text="001"
                                             HeightRequest="20"
                                             Margin="10,0"/>
-                            <Label      x:Name="roomMenuTextBlock"
+                <Label      x:Name="roomMenuTextBlock"
                                             Text="학식"
                                             HeightRequest="20"
                                             Margin="5,0"/>
-                            <Label      x:Name="roomTextTimeTextBlock"
+                <Label      x:Name="roomTextTimeTextBlock"
                                             Text="13:00"
                                             HeightRequest="20"
                                             Margin="5,0"/>
-                            <Label      x:Name="roomJoinNumberTextBlock"
+                <Label      x:Name="roomJoinNumberTextBlock"
                                             Text="4명"
                                             HeightRequest="20"
                                             Margin="5,0"/>
-                            <Image          x:Name="roomStatusImage"
+                <Image          x:Name="roomStatusImage"
                                             HeightRequest="10" WidthRequest="10"
 
                                             Source="Images/redLight.png"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label      x:Name="roomTitleTextBlock"
+              </StackLayout>
+              <StackLayout Orientation="Horizontal">
+                <Label      x:Name="roomTitleTextBlock"
                                             Text="방 제목이 들어올 자리"
                                             Margin="10,0"
                                             HeightRequest="30" 
                                             FontSize="20"/>
-                        </StackLayout>
-                       
-                    </StackLayout>
+              </StackLayout>           
+            </StackLayout>
+            -->
             </DataTemplate>
           </ListView.ItemTemplate>
-          </ListView>
+        </ListView>
       </ScrollView>
     </Grid>
 
-  </Grid>
+  </StackLayout>
 </ContentPage>

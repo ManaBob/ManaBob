@@ -7,6 +7,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using ManaBob;
+using ManaBob.Services;
+
 namespace ManaBob.Droid
 {
     [Activity(Label = "ManaBob", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -17,7 +20,10 @@ namespace ManaBob.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+
+            var net = new ManaBob.Services.FakeNet();
+            var Core = new ManaBob.AppCore(net);
+            LoadApplication(Core);
         }
     }
 }

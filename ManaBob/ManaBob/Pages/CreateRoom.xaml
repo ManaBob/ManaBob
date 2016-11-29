@@ -2,16 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ManaBob.Pages.CreateRoom">
-  <!--Main Grid-->
-  <Grid >
-    <Grid.RowDefinitions>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="1*"/>     
-      <RowDefinition Height="100"/>
-    </Grid.RowDefinitions>
-
-    <!--Top Panel-->
-    <Grid Grid.Row="0">
+  <!--Main Grid-->    
+  <StackLayout VerticalOptions="FillAndExpand">
+        
+      <!--Top Panel-->
+    <Grid>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="1*"/>
@@ -27,221 +22,202 @@
              VerticalOptions="Center"
              />
     </Grid>
-    
-    <Grid Grid.Row="1">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="10"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="30"/>
-        <RowDefinition Height="35"/>
-        <RowDefinition Height="35"/>
-        <RowDefinition Height="30"/>
-      </Grid.RowDefinitions>
 
-      <!--*필수항목-->
-      <Grid Grid.Row="1">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <!--
-        <Label  x:Name="critical"
-                Text="*는 필수항목"
-                TextColor="Red"
+    <!--*필수항목-->
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+      <!--
+      <Label  x:Name="critical"
+              Text="*는 필수항목"
+              TextColor="Red"
+              WidthRequest="120"
+              Grid.Column="1"
+              Margin="30,0"/>
+      -->
+      <Image    Source="Images/CreateRoom_red.png"
                 WidthRequest="120"
                 Grid.Column="1"
-                Margin="30,0"/>
-        -->
-        
-        <Image    Source="Images/CreateRoom_red.png"
-                  WidthRequest="120"
-                  Grid.Column="1"
-                  Margin="25,0"
-                  />
-      </Grid>
-
-      <!--*방 제목 입력-->
-      <Grid Grid.Row="2">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <!--
-        <Label   x:Name="RoomTitleTextBlock"
-                 Text="* 방 제목 입력"
-                 TextColor="Black"
-                 WidthRequest="120"
-                 Grid.Column="1"
-                 Margin="30,0"/>
-        -->
-        <Image    Source="Images/CreateRoom_title.png"
-                  WidthRequest="120"
-                  Grid.Column="1"
-                  Margin="25,0"
-                  />
-      </Grid>
-      
-      <!--*카테고리선택-->
-      <Grid Grid.Row="3">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="30"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        
-        <Entry  x:Name="RoomTitleTextBox"
-                Text="TextBox"
-                Grid.Column="1"
-                Margin="40,0"
+                Margin="25,0"
                 />
-      </Grid>
-      
-      <Grid Grid.Row="4">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <!--
-        <Label  x:Name="categoryLabel"
-                Text="* 카테고리선택"
-                WidthRequest="120"
-                Margin="30,5"
-                Grid.Column="1"/>
-        -->
-        <Image    Source="Images/CreateRoom_cata.png"
-                  WidthRequest="120"
-                  Grid.Column="1"
-                  Margin="25,0"
-                  />
-      </Grid>
-      
-      <Grid Grid.Row="5">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="30"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <Picker     x:Name="category"
-                    Grid.Column="1"
-                    Margin="40,0"/>
-      </Grid>
+    </Grid>
 
-      <!--*인원선택-->
-      <Grid Grid.Row="6">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <!--
-        <Label   x:Name="joinNumber"
-                 Text="* 인원선택"
-                 TextColor="Black"
-                 WidthRequest="120"
-                 Margin="30,5"
-                 Grid.Column="1"/>
-        -->
-        <Image    Source="Images/CreateRoom_number.png"
-                  WidthRequest="120"
+    <!--*방 제목 입력-->
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+      <!--
+      <Label   x:Name="RoomTitleTextBlock"
+               Text="* 방 제목 입력"
+               TextColor="Black"
+               WidthRequest="120"
+               Grid.Column="1"
+               Margin="30,0"/>
+      -->
+      <Image    Source="Images/CreateRoom_title.png"
+                WidthRequest="120"
+                Grid.Column="1"
+                Margin="25,0"
+                />
+    </Grid>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="30"/>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="20"/>
+      </Grid.ColumnDefinitions>
+
+      <Entry  x:Name="RoomTitleTextBox"
+              Text="TextBox"
+              Grid.Column="1"
+              Margin="40,0"
+              />
+    </Grid>
+
+    <!--*카테고리선택-->
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+      <!--
+      <Label  x:Name="categoryLabel"
+              Text="* 카테고리선택"
+              WidthRequest="120"
+              Margin="30,5"
+              Grid.Column="1"/>
+      -->
+      <Image    Source="Images/CreateRoom_cata.png"
+                WidthRequest="120"
+                Grid.Column="1"
+                Margin="25,0"
+                />
+    </Grid>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="30"/>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="20"/>
+      </Grid.ColumnDefinitions>
+      <Picker     x:Name="category"
                   Grid.Column="1"
-                  Margin="25,0"
+                  Margin="40,0"/>
+    </Grid>
+
+    <!--*인원선택-->
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+      <!--
+      <Label   x:Name="joinNumber"
+               Text="* 인원선택"
+               TextColor="Black"
+               WidthRequest="120"
+               Margin="30,5"
+               Grid.Column="1"/>
+      -->
+      <Image    Source="Images/CreateRoom_number.png"
+                WidthRequest="120"
+                Grid.Column="1"
+                Margin="25,0"
+                />
+    </Grid>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="30"/>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="20"/>
+      </Grid.ColumnDefinitions>
+
+      <Picker     x:Name="person"
+                  Grid.Column="1"
+                  Margin="40,0"
                   />
-      </Grid>
-      
-      <Grid Grid.Row="7">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="30"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        
-        <Picker     x:Name="person"
+    </Grid>
+
+    <!--*시간선택-->
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+      <!--
+      <Label  x:Name="time"
+              Text="* 시간선택"
+              TextColor="Black"
+              WidthRequest="120"
+              Margin="30,5"
+              Grid.Column="1"/>
+      -->
+      <Image    Source="Images/CreateRoom_time.png"
+                WidthRequest="120"
+                Grid.Column="1"
+                Margin="25,0"
+                />
+    </Grid>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="30"/>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="20"/>
+      </Grid.ColumnDefinitions>
+
+      <TimePicker   x:Name="timePick"
                     Grid.Column="1"
                     Margin="40,0"
                     />
-      </Grid>
-      
-      <!--*시간선택-->
-      <Grid Grid.Row="8">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <!--
-        <Label  x:Name="time"
-                Text="* 시간선택"
-                TextColor="Black"
-                WidthRequest="120"
-                Margin="30,5"
-                Grid.Column="1"/>
-        -->
-        <Image    Source="Images/CreateRoom_time.png"
-                  WidthRequest="120"
-                  Grid.Column="1"
-                  Margin="25,0"
-                  />
-      </Grid>
+    </Grid>
 
-      <Grid Grid.Row="9">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="30"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        
-        <TimePicker   x:Name="timePick"
-                      Grid.Column="1"
-                      Margin="40,0"
-                      />
-      </Grid>
-      
-      <!--예상비용-->
-      <Grid Grid.Row="10">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="10"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <!--
-        <Label  x:Name="insert_cost"
-                Text="예상비용"
-                TextColor="Black"
+
+    <!--예상비용-->
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+      <!--
+      <Label  x:Name="insert_cost"
+              Text="예상비용"
+              TextColor="Black"
+              WidthRequest="120"
+              Margin="30,5"
+              Grid.Column="1"/>
+      -->
+
+      <Image    Source="Images/CreateRoom_ex.png"
                 WidthRequest="120"
-                Margin="30,5"
-                Grid.Column="1"/>
-        -->
-        
-        <Image    Source="Images/CreateRoom_ex.png"
-                  WidthRequest="120"
-                  Grid.Column="1"
-                  Margin="25,0"
-                  />
-      </Grid>
-      
-      <Grid Grid.Row="11">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="30"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        
-        <Entry     x:Name="MeetTime"
-                   HeightRequest="30"
-                   Text="TextBox"
-                   Grid.Column="1"
-                   Margin="40,0"
-                   />
-      </Grid>
-      
+                Grid.Column="1"
+                Margin="25,0"
+                />
+    </Grid>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="30"/>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="20"/>
+      </Grid.ColumnDefinitions>
+
+      <Entry     x:Name="MeetTime"
+                 HeightRequest="30"
+                 Text="TextBox"
+                 Grid.Column="1"
+                 Margin="40,0"
+                 />
     </Grid>
     
-    
     <!--버튼-->
-    <Grid Grid.Row="2">
+    <Grid>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="1*"/>
@@ -273,6 +249,8 @@
                 HeightRequest="60" WidthRequest="60"
                 />
     </Grid>
-    
-  </Grid><!--Main Grid-->
+
+  </StackLayout>
+  <!--Main Layout-->
+
 </ContentPage>

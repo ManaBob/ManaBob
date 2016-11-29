@@ -16,19 +16,14 @@
                 VerticalOptions="Center"
                 HeightRequest="150" WidthRequest="300" />
 
-      <Entry    x:Name="EntryID"
-                Placeholder="ID"
-                />
-      <Entry    x:Name="EntryPWD"
-                Placeholder="Password"
-                IsPassword="True"
-                />
     </Grid>
 
     <Grid Grid.Row="1">
       <Grid.RowDefinitions>
         <RowDefinition Height="1*"/>
         <RowDefinition Height="1*"/>
+        <RowDefinition Height="1*"/>
+
       </Grid.RowDefinitions>
 
       <Image    Source="Images/facebookmark.png"
@@ -37,7 +32,6 @@
                 VerticalOptions="Center"
                 HeightRequest="60" WidthRequest="120"
                 />
-      
       <Button   x:Name="confirmButton"
                 Grid.Row="0"
                 HorizontalOptions="Center"
@@ -51,13 +45,25 @@
                 VerticalOptions="Center"
                 HeightRequest="60" WidthRequest="120"
                 />
-
       <Button   x:Name="LoginBtn"
                 Grid.Row="1"
                 HorizontalOptions="Center"
                 HeightRequest="60" WidthRequest="120"
                 Margin="10"
+                Clicked="OnLoginBtnClicked"
                 />
+
+      <StackLayout  Orientation="Vertical"
+                    Grid.Row="2"
+                    >
+        <Entry    x:Name="EntryID"
+                  Placeholder="ID"
+                  />
+        <Entry    x:Name="EntryPWD"
+                  Placeholder="Password"
+                  IsPassword="True"
+                  />
+      </StackLayout>
 
 
     </Grid>

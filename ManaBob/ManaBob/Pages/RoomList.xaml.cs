@@ -59,14 +59,12 @@ namespace ManaBob.Pages
             // Picker : Menu/Capacities
             foreach(String menu in viewModel.Menus)
             {
-                //"한식",
-                //"양식",
-                //"일식",
-                //"중식",
-                //"학식"
                 menuPick.Items.Add(menu);
             }
             foreach (String size in viewModel.Capacities)
+            {
+                sizePick.Items.Add(size);
+            }
 
             // ---- ---- ---- ---- ----
 
@@ -101,6 +99,12 @@ namespace ManaBob.Pages
             {
                 DisplayAlert("Logout Failed", "OnLogoutButtonClicked", "OK");
             }
+        }
+
+        protected void OnCreateBtnClicked(object _sender, EventArgs _ev)
+        {
+            var next = pages.Resolve<CreateRoom>();
+            navi.PushAsyncTo(next);
         }
 
     }

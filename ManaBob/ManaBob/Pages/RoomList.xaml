@@ -5,7 +5,6 @@
 
   <!--Main Layout -->
   <StackLayout Orientation="Vertical"
-               BackgroundColor="#DDDDFF"
                VerticalOptions="FillAndExpand">
 
     <!-- 0. Top Panel -->
@@ -17,19 +16,25 @@
       </Grid.ColumnDefinitions>
 
       <!-- Sign Out -->
+      <Image    Source="Images/logout.png"
+                Grid.Column="0"
+                HeightRequest="50" WidthRequest="50"
+                Margin="10,0"
+                />
       <Button   x:Name="logOutBtn"
                 Grid.Column="0"
                 HeightRequest="50" WidthRequest="50"
-                Text="Out"
                 Clicked="OnLogoutButtonClicked"
                 />
 
       <!-- Room Name -->
-      <Label    Grid.Column="1" 
-                Text="만 나 밥" 
+
+      <Image    x:Name="mainTitle"
+                Source="Images/mainTitle.png"
+                Grid.Column="1"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
-                FontSize="30"/>
+                />
 
       <!-- Create Room -->
       <Image    Source="Images/createRoom.png" 
@@ -51,12 +56,7 @@
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="10"/>
       </Grid.ColumnDefinitions>
-      <!--
-      <Label    Text="방제목"
-                Grid.Column="0"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                FontSize="15"/>-->
+
       <Image      Source="Images/RoomList_tilte.png"
                   Grid.Column="0"
                   VerticalOptions="Center"
@@ -82,13 +82,13 @@
         <ColumnDefinition Width="10"/>
       </Grid.ColumnDefinitions>
     
-      <Label      Text="메뉴선택"
+      <Image      Source="Images/RoomList_menu.png"
                   Grid.Row="0"
                   Grid.Column="1"
                   VerticalOptions="Center"
                   HorizontalOptions="Center"
-                  FontSize="15"
                   />
+      
       <Picker     x:Name="menuPick"
                   Grid.Row="1"
                   Grid.Column="1"
@@ -96,25 +96,25 @@
                   HorizontalOptions="CenterAndExpand"
                   />
 
-      <Label      Text="시간선택"
+      <Image      Source="Images/RoomList_time.png"
                   Grid.Row="0"
                   Grid.Column="2"
-                  VerticalOptions="Center"
+                  HeightRequest="22"
                   HorizontalOptions="Center"
-                  FontSize="15"
+                  VerticalOptions="Center"
+                  
                   />
       <TimePicker x:Name="timePick"
                   Grid.Row="1"
                   Grid.Column="2"
                   HorizontalOptions="CenterAndExpand"
                   />
-
-      <Label      Text="인원선택"
+      
+      <Image      Source="Images/RoomList_number.png"
                   Grid.Row="0"
                   Grid.Column="3"
                   VerticalOptions="Center"
                   HorizontalOptions="Center"
-                  FontSize="15"
                   />
       <Picker     x:Name="sizePick"
                   Grid.Row="1"

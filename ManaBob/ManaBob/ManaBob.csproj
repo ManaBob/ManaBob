@@ -57,6 +57,10 @@
     <Compile Include="Pages\Intro.xaml.cs">
       <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RoomInfoChange.xaml.cs">
+      <DependentUpon>RoomInfoChange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoomInfoChangeViewModel.cs" />
     <Compile Include="Pages\RoomList.xaml.cs">
       <DependentUpon>RoomList.xaml</DependentUpon>
     </Compile>
@@ -125,6 +129,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Website.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\RoomInfoChange.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

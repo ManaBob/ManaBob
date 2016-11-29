@@ -13,6 +13,7 @@ namespace ManaBob.Pages
 
     public static class ChatRoomTest
     {
+
         public static List<Message> GetMessages()
         {
             return new List<Message>
@@ -73,6 +74,12 @@ namespace ManaBob.Pages
         protected void OnBackButtonClicked(object _sender, EventArgs _ev)
         {
             navi.PopAsync();
+        }
+
+        protected void OnChangeButtonClicked(object _sender, EventArgs _ev)
+        {
+            var next = pages.Resolve<RoomInfoChange>();
+            navi.PushAsyncTo(next);
         }
     }
 }

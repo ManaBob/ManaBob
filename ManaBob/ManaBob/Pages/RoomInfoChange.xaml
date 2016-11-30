@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ManaBob.Pages.CreateRoom">
+             x:Class="ManaBob.Pages.RoomInfoChange">
+  
   <!--Main Grid-->
   <Grid >
     <Grid.RowDefinitions>
@@ -19,7 +20,7 @@
       </Grid.ColumnDefinitions>
 
       <!--Room Name-->
-      <Image    x:Name="mainTitle"
+      <Image    x:Name="ChangeMainTitle"
                 Source="Images/mainTitle.png"
                 Grid.Column="1"
                 VerticalOptions="Center"
@@ -74,7 +75,7 @@
           <ColumnDefinition Width="1*"/>
           <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Entry  x:Name="RoomTitleTextBox"
+        <Entry  x:Name="ChangeRoomTitleTextBox"
                 Text="TextBox"
                 Grid.Column="1"
                 Margin="40,0"/>
@@ -96,7 +97,7 @@
           <ColumnDefinition Width="1*"/>
           <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Picker     x:Name="category"
+        <Picker     x:Name="ChangeCategory"
                     Grid.Column="1"
                     Margin="40,0"/>
       </Grid>
@@ -119,7 +120,7 @@
           <ColumnDefinition Width="1*"/>
           <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Picker     x:Name="person"
+        <Picker     x:Name="ChangePerson"
                     Grid.Column="1"
                     Margin="40,0"/>
       </Grid>
@@ -141,9 +142,10 @@
           <ColumnDefinition Width="1*"/>
           <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <TimePicker   x:Name="timePick"
+        <TimePicker   x:Name="ChangeTimePick"
                       Grid.Column="1"
-                      Margin="40,0"/>
+                      Margin="40,0"
+                      />
       </Grid>
       <!--예상비용-->
       <Grid Grid.Row="10">
@@ -155,7 +157,8 @@
         <Image    Source="Images/CreateRoom_ex.png"
                   WidthRequest="120"
                   Grid.Column="1"
-                  Margin="25,0"/>
+                  Margin="25,0"
+                  />
       </Grid>
       <Grid Grid.Row="11">
         <Grid.ColumnDefinitions>
@@ -163,11 +166,12 @@
           <ColumnDefinition Width="1*"/>
           <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Entry     x:Name="MeetTime"
+        <Entry     x:Name="ChangeMeetTime"
                    HeightRequest="30"
                    Text="TextBox"
                    Grid.Column="1"
-                   Margin="40,0"/>
+                   Margin="40,0"
+                   />
       </Grid>
 
 
@@ -184,8 +188,10 @@
               HeightRequest="60"
               WidthRequest="60"
               HorizontalOptions="Center"
-              VerticalOptions="Center"/>
-      <Button     x:Name="cancel"
+              VerticalOptions="Center"
+              />
+      
+      <Button     x:Name="ChangeCancel"
                   HeightRequest="60" WidthRequest="60"
                   Grid.Column="0"
                   Clicked="CancleButtonClicked"
@@ -193,15 +199,18 @@
 
       <!--만들기-->
 
-      <Image    Source="Images/plus.png"
+      <Image    Source="Images/success.png"
                 HeightRequest="60"
                 WidthRequest="60"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Grid.Column="1"/>
-      <Button     x:Name="makeButton"
+                Grid.Column="1"
+                />
+      <Button     x:Name="ChangeInfoClicked"
                   Grid.Column="1"
-                  HeightRequest="60" WidthRequest="60"/>
+                  HeightRequest="60" WidthRequest="60"
+                  Clicked="OnChangeInfoClicked"
+                  />
     </Grid>
   </Grid>
 

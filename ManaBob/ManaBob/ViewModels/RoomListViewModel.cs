@@ -25,12 +25,12 @@ namespace ManaBob.ViewModel
         {
             Menus = new List<String>
             {
-                "Unknown","Korean"
+                "한식","중식","일식","양식","학식","분식","기타"
             };
 
             Capacities = new List<String>
             {
-                "1", "2", "3", "4"
+                "2명", "3명", "4명", "기타"
             };
 
             AllRooms = new List<Room>();

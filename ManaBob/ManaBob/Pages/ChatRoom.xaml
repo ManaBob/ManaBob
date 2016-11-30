@@ -5,7 +5,7 @@
              >
 
   <!--Main Grid-->
-  <Grid BackgroundColor="#FFFFEE" >
+  <Grid >
     <Grid.RowDefinitions>
       <RowDefinition Height="50"/>
       <RowDefinition Height="1*"/>
@@ -16,44 +16,39 @@
     <Grid Grid.Row="0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="50"/>
-        <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="50"/>
       </Grid.ColumnDefinitions>
 
-      <!--Application Logo-->
-      <Image  x:Name="logoImage"
-              Grid.Column="0"
-              Source="Images/dish.png"
-              WidthRequest="50"
-              />
+      <!--Back Button Image-->
+      <Image      x:Name="exitImage"
+                  Source="Images/exit.png"
+                  Grid.Column="0"/>
       <Button   x:Name="backBtn"
-                Grid.Column="1"
+                Grid.Column="0"
                 WidthRequest="50"
-                Text="Back"
                 Clicked="OnBackButtonClicked"
                 />
       <!--Room Name-->
       <Label  x:Name="roomName"
-              Grid.Column="2"
+              Grid.Column="1"
               HeightRequest="50"
               Text="Room's Name"
               />
-      <Image x:Name="exitImage"
-             Source="Images/exit.png"
-             Grid.Column="2"
-             HeightRequest="50" WidthRequest="50"
-             />
-      <Button x:Name="exitButton"
-              Grid.Column="2"
-              HeightRequest="50" WidthRequest="50"
-              />
+      <!--Room Info change button Image-->
+      <Image    x:Name="changeImage"
+                Source="Images/chagne.png"
+                Grid.Column="2"
+                HeightRequest="50" WidthRequest="50"
+                />
+
       <!--Options for Room Owner-->
       <!--방장에게만 보이는 수정 버튼-->
-      <Button x:Name="changeButton"
-              Grid.Column="3"
-              HeightRequest="50" WidthRequest="50"
-              />
+      <Button     x:Name="changeButton"
+                  Grid.Column="2"
+                  HeightRequest="50" WidthRequest="50"
+                  Clicked="OnChangeButtonClicked"
+                  />
     </Grid>
 
     <!-- Message Display Panel -->
@@ -108,7 +103,6 @@
               Grid.Column="2"
               HeightRequest="50" WidthRequest="50"
               Clicked="OnSendButtonClicked"
-              Image="Images/send.png"
               />
     </Grid>
     

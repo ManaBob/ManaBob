@@ -11,11 +11,11 @@ using ManaBob.Services;
 
 namespace ManaBob.ViewModel
 {
-    public class CreateRoomViewModel :
+    public class RoomInfoChangeViewModel :
             Xamarin.Forms.BindableObject
     {
 
-        public CreateRoomViewModel()
+        public RoomInfoChangeViewModel()
         {
 
             Menus = new List<String>
@@ -39,8 +39,8 @@ namespace ManaBob.ViewModel
         }
 
 
-        public List<String> Menus       { get; set; }
-        public List<String> Capacities  { get; set; }
+        public List<String> Menus { get; set; }
+        public List<String> Capacities { get; set; }
 
     }
 

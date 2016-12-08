@@ -75,7 +75,7 @@ namespace ManaBob.ViewModel
         {
             Request roomEnter = new Request(AppCore.CurrentUser,
                                             Request.Category.EnterRoom,
-                                            "Hello!");
+                                            "Enter");
 
             Response res = await netSvc.Send(roomEnter);
 
@@ -93,7 +93,7 @@ namespace ManaBob.ViewModel
         {
             Request roomLeave = new Request(AppCore.CurrentUser,
                                             Request.Category.LeaveRoom,
-                                            "Bye!");
+                                            "Leave");
 
             Response res = await netSvc.Send(roomLeave);
 
@@ -112,13 +112,13 @@ namespace ManaBob.ViewModel
         }
 
 
-        /// <summary>
-        ///     Trigger UI update 
-        /// </summary>
-        public void NotifyChange()
-        {
-            OnPropertyChanged("Chats");
-        }
+        ///// <summary>
+        /////     Trigger UI update 
+        ///// </summary>
+        //public void NotifyChange()
+        //{
+        //    OnPropertyChanged();
+        //}
 
         public List<Chat> Chats
         {
@@ -129,7 +129,7 @@ namespace ManaBob.ViewModel
             set
             {
                 chatlist = value;
-                this.NotifyChange();
+                OnPropertyChanged();
             }
         }
 

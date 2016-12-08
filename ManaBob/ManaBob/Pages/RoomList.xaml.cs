@@ -19,17 +19,17 @@ namespace ManaBob.Pages
             return new List<Room>
             {
                 new Room {
-                    Name = "Room !1",   ID = 1, Menu = Room.MenuCode.Unknown,
+                    Name = "2인 6천",   ID = 1, Menu = Room.MenuCode.Unknown,
                     Budget = 6000, Size = 2,   Capacity = 2,
                     Status = Room.StatusCode.Full
                 },
                 new Room {
-                    Name = "Room @2", ID = 2, Menu = Room.MenuCode.Unknown,
+                    Name = "HellWorld", ID = 2, Menu = Room.MenuCode.Unknown,
                     Budget = 7000, Size = 2,   Capacity = 4,
                     Status = Room.StatusCode.Open
                 },
                 new Room {
-                    Name = "Room #3", ID = 3, Menu = Room.MenuCode.Kor,
+                    Name = "라면도 한식인가", ID = 3, Menu = Room.MenuCode.Korean,
                     Budget = 4400, Size = 3,   Capacity = 3,
                     Status = Room.StatusCode.Closed
                 },
@@ -75,13 +75,17 @@ namespace ManaBob.Pages
         protected void OnRoomSelected(object _sender, SelectedItemChangedEventArgs _ev)
         {
             var item = _ev.SelectedItem as Room;
-            if (item == null)
-            {
+            if (item == null){
                 return;
             }
-            //this.appName.Text = item.Name;
+            // Disable recursive event loop
             roomListView.SelectedItem = null;
 
+            if (item.Status == Room.StatusCode.Full)
+            {
+                DisplayAlert("It's full!", "The room is already full", "OK");
+                return;
+            }
 
             var next = pages.Resolve<ChatRoom>();
             navi.PushAsyncTo(next);

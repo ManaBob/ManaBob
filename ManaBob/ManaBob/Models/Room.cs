@@ -30,7 +30,7 @@ namespace ManaBob
         public enum MenuCode
         {
             Unknown = 0,    // Default value
-            Kor,
+            Korean,
         }
 
         /// <summary>
@@ -46,12 +46,21 @@ namespace ManaBob
         public Int64        ID        { get; set; }
         public String       Name      { get; set; }
         public StatusCode   Status    { get; set; }
+        public DateTime     Time      { get; set; }
         public UInt32       Size      { get; set; }
         public UInt32       Capacity  { get; set; }
         public MenuCode     Menu      { get; set; }
         public Decimal      Budget    { get; set; }
         public List<User>   Users     { get; set; }
-
+        public string detail {
+            get
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.AppendFormat("Status {0}, Size {1}, Cap {2}, ", Status, Size, Capacity);
+                builder.AppendFormat("Menu {0}, Budget {1}", Menu, Budget);
+                return builder.ToString();
+            }
+        }
 
         public Room()
         {

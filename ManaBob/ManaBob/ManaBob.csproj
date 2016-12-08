@@ -60,7 +60,7 @@
     <Compile Include="Pages\RoomInfoChange.xaml.cs">
       <DependentUpon>RoomInfoChange.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RoomInfoChangeViewModel.cs" />
+    <Compile Include="ViewModels\RoomInfoChangeViewModel.cs" />
     <Compile Include="Pages\RoomList.xaml.cs">
       <DependentUpon>RoomList.xaml</DependentUpon>
     </Compile>

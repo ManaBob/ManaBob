@@ -36,14 +36,12 @@ namespace ManaBob.Pages
 	{
         Navigator            navi      = AppCore.Services.Resolve<Navigator>();
         Repo<ContentPage>    pages     = AppCore.Services.Resolve<Repo<ContentPage>>();
-        ChatRoomViewModel    viewModel = AppCore.Services.Resolve<ChatRoomViewModel>();
+        ChatRoomViewModel    viewModel = new ChatRoomViewModel();
 
         public ChatRoom ()
 		{
             InitializeComponent();            // Load XAML
-
             this.BindingContext = viewModel;
-            this.sendButton.Clicked += OnSendButtonClicked;
 		}
 
         // 메세지가 제대로 Display 되지 않음.
@@ -60,11 +58,14 @@ namespace ManaBob.Pages
                 return;
             }
 
-            Chat c = new ViewModel.Chat(msg);
+            {
+                Chat c = new ViewModel.Chat(msg);
+                var list = new List<Chat>(viewModel.Chats);
+                list.Add(c);
 
-            viewModel.Chats.Add(c);
-            // Notify UI to update
-            viewModel.NotifyChange();
+                // Notify UI to update
+                viewModel.Chats = list;
+            }
 
             // Clear the message
             this.userInput.Text = "";

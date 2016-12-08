@@ -131,40 +131,38 @@
         <ListView x:Name="roomListView" ItemsSource="{Binding AllRooms}">
           <ListView.ItemTemplate>
             <DataTemplate>
-            <TextCell Text="{Binding Name}" Detail="{Binding Budget}"/>
-            <!--제안된 템플릿 
-            <StackLayout Orientation="Vertical" >
+            <TextCell Text="{Binding Name}" Detail="{Binding detail}"/>
+            <!--<StackLayout Orientation="Vertical" >
               <StackLayout Orientation="Horizontal" >
-                <Label      x:Name="roomNumberTextBlock"
-                                            Text="001"
-                                            HeightRequest="20"
-                                            Margin="10,0"/>
-                <Label      x:Name="roomMenuTextBlock"
-                                            Text="학식"
-                                            HeightRequest="20"
-                                            Margin="5,0"/>
-                <Label      x:Name="roomTextTimeTextBlock"
-                                            Text="13:00"
-                                            HeightRequest="20"
-                                            Margin="5,0"/>
-                <Label      x:Name="roomJoinNumberTextBlock"
-                                            Text="4명"
-                                            HeightRequest="20"
-                                            Margin="5,0"/>
-                <Image          x:Name="roomStatusImage"
-                                            HeightRequest="10" WidthRequest="10"
-
-                                            Source="Images/redLight.png"/>
+                <Label  x:Name="roomNumberTextBlock"
+                        Text="{Binding ID}"
+                        HeightRequest="20"
+                        Margin="10,0"/>
+                <Label  x:Name="roomMenuTextBlock"
+                        Text="학식"
+                        HeightRequest="20"
+                        Margin="5,0"/>
+                <Label  x:Name="roomTextTimeTextBlock"
+                        Text="13:00"
+                        HeightRequest="20"
+                        Margin="5,0"/>
+                <Label  x:Name="roomJoinNumberTextBlock"
+                        Text="{Binding Capacity}"
+                        HeightRequest="20"
+                        Margin="5,0"/>
+                <Image  x:Name="roomStatusImage"
+                        HeightRequest="10" WidthRequest="10"
+                        Source="Images/redLight.png"/>
               </StackLayout>
               <StackLayout Orientation="Horizontal">
-                <Label      x:Name="roomTitleTextBlock"
-                                            Text="방 제목이 들어올 자리"
-                                            Margin="10,0"
-                                            HeightRequest="30" 
-                                            FontSize="20"/>
+                <Label  x:Name="roomTitleTextBlock"
+                        Text="{Binding Name}"
+                        Margin="10,0"
+                        HeightRequest="30" 
+                        FontSize="20"/>
               </StackLayout>           
-            </StackLayout>
-            -->
+            </StackLayout>-->
+            
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
